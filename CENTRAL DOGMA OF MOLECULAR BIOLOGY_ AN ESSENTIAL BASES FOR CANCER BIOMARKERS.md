@@ -10,7 +10,7 @@ DNA, a double stranded molecule with complementary nucleotide sequence, is a gen
 
 The process begins with replication, the nucleotide sequence of a double stranded parent cell is exactly copied into complementary two double stranded daughter cell DNA by an enzyme DNA polymerase. Each strand of the DNA is conserved and becomes one of two new daughter strands while the other is synthesized. DNA polymerase catalyzes the adding of nucleotides one by one to a growing DNA chain in a 5’ to 3’ bi-direction. The gene's protein information encoded in DNA is transcribed to messenger RNA. This copy messenger RNA moves from the cell nucleus to the cytoplasm for the synthesis of protein. The mRNA is translated, where ribosomes interpret the sequence and synthesize the chain of amino acids leading to protein synthesis. This protein ends the product of central dogma (Lodish et al., 2000).
 
- 
+ ![image2-1](https://github.com/user-attachments/assets/a044b96f-eabd-4202-bea8-52c5e54dd881)
 
  
 
@@ -24,7 +24,7 @@ The process begins with replication, the nucleotide sequence of a double strande
 
  
 
- ![][image1]
+
 
 **FIGURE 1**: Central dogma of molecular biology (Katherine, 2020).
 

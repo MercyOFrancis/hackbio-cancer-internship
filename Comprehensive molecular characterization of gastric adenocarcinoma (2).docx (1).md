@@ -24,9 +24,21 @@ This study identified four primary genomic subtypes of gastric cancer: Epsteinâ€
 
 
 
+
+
+
 **Figure 1:** A representation of the genomic subtypes of gastric carcinoma with sample size data**.**
 
 By analyzing the mRNA sequence data for alternative splicing events, about 30% of the sample data showed skipping Mesenchymal Epithelial Transition (MET 2\) exon. This has been associated with increased MET expression. Also, novel variants of the same gene, namely MET exon 18 and 19, were skipped, as shown in Fig. 2\. 
+
+
+
+
+![Figure 2](https://github.com/user-attachments/assets/833fc53f-1d51-434d-a45d-66e467b4155d)
+
+
+
+
 
 **Figure 2:** Reads Per Kilobase per Million mapped reads (RPKM) expression of MET in samples with and without exon (A) or exon 18 and/or 19 (B) skipping in MET. 
 

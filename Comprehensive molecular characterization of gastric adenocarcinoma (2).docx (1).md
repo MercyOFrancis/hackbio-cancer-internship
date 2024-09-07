@@ -44,6 +44,16 @@ By analyzing the mRNA sequence data for alternative splicing events, about 30% o
 
 Based on Reverse Phase Protein Array (RPPA) data analysis, 45 proteins were also expressed or phosphorylated across the four molecular subtypes. Notably, EGFR was significantly phosphorylated in the CIN subtype while expression of the p53 gene was abnormal, which was consistent with TP53 mutation in the same subtype, as shown in Fig. 3\. 
 
+
+
+
+![Fig  3](https://github.com/user-attachments/assets/b9d252d0-e8fc-4e13-9846-67d2a80fe0a0)
+
+
+
+
+
+
 **Figure 3:** Unsupervised hierarchical clustering of RPPA data, identifying three clusters, including reactive, invasive, and proliferative.
 
 **Discussion**

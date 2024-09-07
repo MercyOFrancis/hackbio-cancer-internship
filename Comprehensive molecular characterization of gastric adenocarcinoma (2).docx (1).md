@@ -1,4 +1,5 @@
-**Contributors:**
+**Contributors:** salaamridwan@yahoo.com, ajisegiriblessing@gmail.com, suprisebaloyi17@gmail.com, 
+                      mercyfrancis18@gmail.com
 
 **Team Lead:** Surprise Baloyi
 

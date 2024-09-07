@@ -1,6 +1,6 @@
 **CENTRAL DOGMA OF MOLECULAR BIOLOGY: AN ESSENTIAL BASES FOR CANCER BIOMARKERS**
 
-Github repo: [https://github.com/MercyOFrancis/hackbio-cancer-internship.git](https://github.com/MercyOFrancis/hackbio-cancer-internship.git)
+Author: Mercy Francis @aslack: mercylee
 
 Francis crick in 1958 formulated the fundamental concept of molecular biology known as the central dogma, which explains the flow of genetic information from Deoxyribonucleic acid (DNA) to Ribonucleic acid (RNA) and to proteins or RNA to protein in a biological system (Crick *et al*, 1970). Existing DNA is replicated to new DNA, new DNA is transcribed to RNA, and RNA is translated to proteins. This sequence controls the cell’s structure, function, regulation, growth and response to their environment. It’s essential to understand this sequence, the various forms and cellular processes to discover the biomarkers in cancer. This will aid the diagnosis, prognosis, and treatment of cancer.
 

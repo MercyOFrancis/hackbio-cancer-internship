@@ -1,6 +1,6 @@
 **Gene Expression and KEGG Pathway Enrichment Analysis in Glioblastoma Using R**
 
-**Contributors**: **Mercy Francis**, **Taha Ikram**, **Braa Elwaleed**, **Ariyo Adesokan**, **Ojiaku Confidence**
+**Contributors**: **Mercy Francis(Mercylee)**, **Taha Ikram(Taha)**, **Braa Elwaleed(Baraa)**, **Ariyo Adesokan**, **Ojiaku Confidence(Areta)**
 
 **Introduction**
 

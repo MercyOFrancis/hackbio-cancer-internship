@@ -1,0 +1,397 @@
+---
+title: "Gene Expression Analysis and Functional Enrichment of Differentially Expressed Genes in Glioblastoma"
+author: "Genome Guardians "
+date: "`r Sys.Date()`"
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    number_sections: false
+    toc_depth: 2
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# **Background**
+
+Neuron-supporting glial cells called astrocytes are the source of the extremely aggressive brain cancer known as glioblastoma. Fast development and the ability to penetrate and kill nearby healthy brain tissue are two of this cancer's well-known traits. Although it is more commonly diagnosed in older persons, glioblastoma can occur at any age.
+
+The molecular and genetic basis of glioblastoma must be understood because of the disease's severe nature and the difficulties in treating it. Finding highly elevated and downregulated genes will be the goal of this project's analysis of gene expression data from glioblastoma samples. Our objective is to identify critical pathways contributing to the advancement of glioblastoma by functional enrichment analysis. This could facilitate the creation of tailored therapeutics and enhanced approaches to management.
+
+# **Data and Loading Preprocessing**
+
+```{r echo=TRUE}
+### Load Necessary Libraries
+
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install("DESeq2")
+
+# Load the libraries
+library(readr)
+library(gplots)
+library(ggplot2)
+library(dplyr)
+library(Amelia)
+library(DESeq2)
+library(gplots)
+```
+
+**Read and Prepare the Data set**
+
+```{r Read data, echo=TRUE}
+# Read in the data set
+Glioblastoma_data <- read.csv("C:/Users/user/Desktop/Hackbio/Hackiobio/glioblastoma_data.csv")
+
+# View the data
+head(Glioblastoma_data)
+tail(Glioblastoma_data)
+str(Glioblastoma_data)
+summary(Glioblastoma_data)
+
+# Convert data to a data frame
+Glioblastoma_data <- as.data.frame(Glioblastoma_data)
+
+# Set rownames to gene identifiers
+rownames(Glioblastoma_data) <- Glioblastoma_data[, 1]
+Glioblastoma_data <- Glioblastoma_data[, -1]  # Remove the first column which is now the rownames
+
+# Transpose the data to match DESeq2 format
+Glioblastoma_data_TRAN <- t(Glioblastoma_data)
+
+# Check for missing data in the glioblastoma_data dataset
+missmap(Glioblastoma_data)
+
+```
+
+**Create Sample Metadata**
+
+```{r Meta, echo=TRUE}
+# Create the data frame for colData
+Glioblastoma_Info <- data.frame(row.names = rownames(Glioblastoma_data_TRAN))
+
+# Assign tissue types based on the barcode
+Glioblastoma_Info$tissue_type <- sapply(rownames(Glioblastoma_Info), function(barcode) {
+  Gene_type <- substr(barcode, 14, 15)
+  switch(Gene_type,
+         "01" = "Solid Tissue Normal",
+         "02" = "Primary Tumor",
+         "06" = "Metastatic",
+         "11" = "Solid Tissue Normal",
+         "12" = "Primary Blood Derived Cancer",
+         "14" = "Primary Blood Derived Cancer",
+         "Unknown")
+})
+
+# Display the first few rows of the data frame
+head(Glioblastoma_Info)
+# Check if rownames in Glioblastoma_Info match the column names in Glioblastoma_data 
+all(rownames(Glioblastoma_Info) %in% colnames(Glioblastoma_data ))  # Should return TRUE
+all(rownames(Glioblastoma_Info) == colnames(Glioblastoma_data ))    # Should return TRUE
+
+```
+
+# **DESeq2 Analysis**
+
+```{r DESeq 2, echo=TRUE}
+# Rounding the data for DESeq2
+Glioblastoma_data <- round(Glioblastoma_data)
+
+# Create DESeq2 dataset
+dds <- DESeqDataSetFromMatrix(countData = Glioblastoma_data, colData = Glioblastoma_Info, design = ~tissue_type)
+
+# Filter low count genes
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep, ]
+
+# Relevel the reference group for comparison
+dds$tissue_type <- relevel(dds$tissue_type, ref = "Solid Tissue Normal")
+
+# Run DESeq analysis
+dds <- DESeq(dds)
+
+# Extract results
+Res <- results(dds)
+Res <- results(dds, alpha = 0.05)  # Apply p-value threshold
+summary(Res)
+
+```
+
+## **Filter Results**
+
+```{r Result, echo=TRUE}
+# Apply adjusted p-value cutoff (alpha = 0.05)
+Res0.01 <- results(dds, alpha = 0.05)
+
+# Filter for upregulated and downregulated genes (log2 fold change threshold of 2)
+Res_filtered <- subset(Res0.01, log2FoldChange > 2 | log2FoldChange < -2)
+
+# View summary of filtered results
+summary(Res_filtered)
+
+# Separate upregulated and downregulated genes
+Upregulated <- Res_filtered[Res_filtered$log2FoldChange > 2, ]
+Downregulated <- Res_filtered[Res_filtered$log2FoldChange < -2, ]
+
+# Save upregulated genes to a CSV file
+write.csv(Upregulated, file = "Upregulated_genes2.csv", row.names = TRUE)
+
+# Save downregulated genes to a CSV file
+write.csv(Downregulated, file = "Downregulated_genes2.csv", row.names = TRUE)
+
+```
+
+#### **Volcano Plot Analysis**
+
+The Plot function creates a scatter plot of log fold change vs. negative log of p-values. - Points are colored red if the p-value is less than 0.05, indicating statistical significance. - A horizontal blue dashed line is added to indicate the significance threshold.
+
+```{r}
+
+# Calculate log fold change
+log_fold_change <- Res_filtered$log2FoldChange
+
+# Calculate p-values from the DESeq2 results
+pvalues <- Res_filtered$pvalue
+
+# Visualize the fold change and negative log of p-values
+plot(log_fold_change, -log10(pvalues), 
+     xlab = "log2(Fold Change)", 
+     ylab = "-log10(p-value)", 
+     main = "Volcano Plot",
+     pch = 20, col = ifelse(pvalues < 0.05, "red", "black"))  # Color points based on significance
+abline(h = -log10(0.05), col = "blue", lty = 2)  # Add a horizontal line for significance threshold
+
+```
+
+**Prepare Gene Lists for Functional Enrichment**
+
+```{r echo=TRUE}
+# Extract the rownames (gene names) of the upregulated genes
+Upregulated_genes <- rownames(Upregulated)
+
+# Save the upregulated gene names to a CSV file for functional enrichment
+write.csv(Upregulated_genes, file = "Upregulated_genes_list.csv", row.names = FALSE)
+
+# Extract the rownames (gene names) of the downregulated genes
+Downregulated_genes <- rownames(Downregulated)
+
+# Save the downregulated gene names to a CSV file for functional enrichment
+write.csv(Downregulated_genes, file = "Downregulated_genes_list.csv", row.names = FALSE)
+
+```
+
+**Select 20 UPregulated Genes and 20 Downregulated Genes**
+
+```{r echo=TRUE}
+# Separate upregulated and downregulated genes
+Upregulated_2<- Res_filtered[Res_filtered$log2FoldChange > 2, ]
+Downregulated_2<- Res_filtered[Res_filtered$log2FoldChange < -2, ]
+
+# Sort upregulated and downregulated genes by their log2FoldChange
+sorted_upregulated <- Upregulated[order(-Upregulated$log2FoldChange), ]  # Sort by decreasing log2FoldChange
+sorted_downregulated <- Downregulated[order(Downregulated$log2FoldChange), ]  # Sort by increasing log2FoldChange
+
+# Get the top 20 upregulated and downregulated genes
+top_20_upregulated <- head(sorted_upregulated, 20)
+top_20_downregulated <- head(sorted_downregulated, 20)
+
+# View the top 10 upregulated and downregulated genes
+top_20_upregulated
+top_20_downregulated
+
+# Save top 20 upregulated genes to CSV
+write.csv(top_20_upregulated, file = "top_20_upregulated_genes.csv", row.names = TRUE)
+
+# Save top 20 downregulated genes to CSV
+write.csv(top_20_downregulated, file = "top_20_downregulated_genes.csv", row.names = TRUE)
+
+
+```
+
+# **Visualization: Using Heatmaps**
+
+```{r}
+# Convert data to log2 scale for normalization
+Glioblastoma_data_log <- log2(Glioblastoma_data + 1)  # Log2 transformation
+
+# Set outer and inner margins for better visibility
+par(oma = c(1, 1, 1, 1))  # Outer margins
+par(mar = c(5, 5, 5, 5))   # Inner plot margins
+
+# Create a heatmap with red, yellow, and blue colors
+heatmap.2(as.matrix(Glioblastoma_data_log),
+          col = colorRampPalette(c("red", "yellow", "blue"))(100),  # Red to Yellow to Blue palette
+          Colv = FALSE,                      # Do not cluster columns
+          Rowv = FALSE,                      # Do not cluster rows
+          dendrogram = "none",               # No clustering
+          trace = "none",                    # Remove trace lines
+          scale = "row",                     # Standardize rows (genes) across samples
+          sepcolor = "black",                # Color for separating columns
+          key = TRUE,                        # Show color key
+          cexRow = 0.8,                      # Adjust row label size
+          cexCol = 0.8,                      # Adjust column label size
+          margins = c(12, 8),               # Adjust margins to fit labels
+          main = "Heatmap with Diverging Palette",  # Title
+          xlab = "Samples",                  # X axis label
+          ylab = "Genes",                    # Y axis label
+          key.title = "Expression Level")    # Key title
+```
+
+**Sequential**
+
+```{r}
+# Set outer and inner margins for better visibility
+par(oma = c(1, 1, 1, 1))  # Outer margins
+par(mar = c(1, 1, 1, 1))   # Inner plot margins
+par(cex.main = 0.75)        # Size of the title
+
+# Create a heatmap with a blue and white sequential color palette
+heatmap.2(as.matrix(Glioblastoma_data_log), 
+          col = colorRampPalette(c("white", "blue"))(100),  # Sequential palette from white to blue
+          Rowv = FALSE,                                      # Do not cluster rows
+          Colv = FALSE,                                      # Do not cluster columns
+          dendrogram = "none",                               # No clustering
+          trace = "none",                                    # Remove trace lines
+          key = TRUE,                                        # Show color key
+          keysize = 1.5,                                     # Size of the key
+          scale = 'row',                                     # Standardize rows (genes) across samples
+          sepcolor = "black",                                # Color for separating columns
+          cexRow = 0.5,                                     # Adjust row label size
+          cexCol = 0.5,                                     # Adjust column label size
+          margins = c(9, 7),                                # Adjust margins to fit labels
+          main = "Heatmap for squential_Palette",  # Title
+          xlab = "Samples",                                  # X-axis label
+          ylab = "Genes",                                    # Y-axis label
+          key.title = "Expression Level")                    # Key title
+
+```
+
+*For Rows*
+
+```{r}
+# Set outer and inner margins for better visibility
+par(oma = c(1, 1, 1, 1))  # Outer margins
+par(mar = c(1, 1, 1, 1))   # Inner plot margins
+par(cex.main = 0.75)        # Size of the title
+
+# Create a heatmap with row clustering and a blue and white sequential color palette
+heatmap.2(as.matrix(Glioblastoma_data_log),
+          col = colorRampPalette(c("white", "blue"))(100),  # Sequential palette from white to blue
+          Rowv = TRUE,                                      # Cluster rows
+          Colv = FALSE,                                      # Do not cluster columns
+          dendrogram = "row",                                # Cluster rows only
+          trace = "none",                                    # Remove trace lines
+          key = TRUE,                                        # Show color key
+          keysize = 1.5,                                     # Size of the key
+          scale = 'row',                                     # Standardize rows (genes) across samples
+          sepcolor = "black",                                # Color for separating columns
+          cexRow = 0.5,                                     # Adjust row label size
+          cexCol = 0.5,                                     # Adjust column label size
+          margins = c(9, 7),                                # Adjust margins to fit labels
+          main = "Heatmap of Glioblastoma - Row Clustering",  # Title
+          xlab = "Samples",                                  # X-axis label
+          ylab = "Genes",                                    # Y-axis label
+          key.title = "Expression Level")                    # Key title
+
+```
+
+**For column**
+
+```{r}
+# Set outer and inner margins for better visibility
+par(oma = c(1, 1, 1, 1))  # Outer margins
+par(mar = c(1, 1, 1, 1))   # Inner plot margins
+par(cex.main = 0.75)        # Size of the title
+
+# Create a heatmap with column clustering and a blue and white sequential color palette
+heatmap.2(as.matrix(Glioblastoma_data_log),
+          col = colorRampPalette(c("white", "blue"))(100),  # Sequential palette from white to blue
+          Rowv = FALSE,                                      # Do not cluster rows
+          Colv = TRUE,                                       # Cluster columns
+          dendrogram = "col",                                # Cluster columns only
+          trace = "none",                                    # Remove trace lines
+          key = TRUE,                                        # Show color key
+          keysize = 1.5,                                     # Size of the key
+          scale = 'row',                                     # Standardize rows (genes) across samples
+          sepcolor = "black",                                # Color for separating columns
+          cexRow = 0.5,                                     # Adjust row label size
+          cexCol = 0.5,                                     # Adjust column label size
+          margins = c(9, 7),                                # Adjust margins to fit labels
+          main = "Heatmap of Glioblastoma - Column Clustering",  # Title
+          xlab = "Samples",                                  # X-axis label
+          ylab = "Genes",                                    # Y-axis label
+          key.title = "Expression Level")                    # Key title
+
+```
+
+**For both clusters**
+
+```{r}
+# Set outer and inner margins for better visibility
+par(oma = c(1, 1, 1, 1))  # Outer margins
+par(mar = c(1, 1, 1, 1))   # Inner plot margins
+par(cex.main = 0.75)        # Size of the title
+
+# Create a heatmap with clustering for both rows and columns
+heatmap.2(as.matrix(Glioblastoma_data_log), 
+          col = colorRampPalette(c("white", "blue"))(100),  # Sequential palette from white to blue
+          Rowv = TRUE,                                      # Cluster rows
+          Colv = TRUE,                                      # Cluster columns
+          dendrogram = "both",                              # Cluster both rows and columns
+          trace = "none",                                   # Remove trace lines
+          key = TRUE,                                       # Show color key
+          keysize = 1.5,                                    # Size of the key
+          scale = 'row',                                    # Standardize rows (genes) across samples
+          sepcolor = "black",                               # Color for separating columns
+          cexRow = 0.5,                                    # Adjust row label size
+          cexCol = 0.5,                                    # Adjust column label size
+          margins = c(9, 7),                               # Adjust margins to fit labels
+          main = "Heatmap of Glioblastoma - Both Clusters",  # Title
+          xlab = "Samples",                                 # X-axis label
+          ylab = "Genes",                                   # Y-axis label
+          key.title = "Expression Level")                   # Key title
+
+```
+
+# **Enrichment Analysis**
+
+Enrichment pathways identify which biological pathways are overrepresented among differentially expressed genes in glioblastoma. Gene lists are prepared, enrichment analysis is conducted, and significant pathways are visualized using bar plots to highlight key pathways involved in the disease.
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+
+# Read pathway enrichment results from a CSV file
+Pathway_data <- read.csv("C:/Users/user/Desktop/Hackbio/Hackiobio/All the data/enrichment.csv")
+
+# View the first few rows to understand the structure
+head(Pathway_data)
+#Set a threshold for signifiance 
+significant_pathways <- Pathway_data %>%
+  filter(`Enrichment.FDR` < 0.05)
+
+
+```
+
+
+
+```{r}
+ggplot(significant_pathways, aes(x = reorder(`Pathway`, `Fold.Enrichment`), y = `Fold.Enrichment`, fill = `Fold.Enrichment`)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Top Enriched Pathways",
+       x = "Pathway",
+       y = "Fold Enrichment") +
+  scale_fill_gradient(low = "darkblue", high = "orange") +
+  theme_minimal()
+
+```
+
+# **Conclusion**
+
+This analysis has revealed significant differentially expressed genes (DEGs) in glioblastoma and highlighted essential biological pathways that contribute to tumor progression. The enriched pathways associated with cell growth, invasion, and resistance to apoptosis underscore their role in the aggressive nature of glioblastoma. These insights enhance our understanding of the molecular mechanisms underlying the disease, indicating potential targets for new treatment strategies. By concentrating on the pathways most affected in glioblastoma, future therapeutic approaches could focus on inhibiting tumor growth and enhancing patient survival, leading to more personalized treatment options for this highly lethal brain cancer.

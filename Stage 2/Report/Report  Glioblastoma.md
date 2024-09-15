@@ -22,34 +22,15 @@ The dataset comprises 582 genes (observations) and 11 samples (variables) with n
 
 Filtered results identified 25 upregulated genes and 78 downregulated genes.
 
-**<!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
- o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
- stroked="f">
- <v:stroke joinstyle="miter"/>
- <v:formulas>
-  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
-  <v:f eqn="sum @0 1 0"/>
-  <v:f eqn="sum 0 0 @1"/>
-  <v:f eqn="prod @2 1 2"/>
-  <v:f eqn="prod @3 21600 pixelWidth"/>
-  <v:f eqn="prod @3 21600 pixelHeight"/>
-  <v:f eqn="sum @0 0 1"/>
-  <v:f eqn="prod @6 1 2"/>
-  <v:f eqn="prod @7 21600 pixelWidth"/>
-  <v:f eqn="sum @8 21600 0"/>
-  <v:f eqn="prod @7 21600 pixelHeight"/>
-  <v:f eqn="sum @10 21600 0"/>
- </v:formulas>
- <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
- <o:lock v:ext="edit" aspectratio="t"/>
-</v:shapetype><v:shape id="Picture_x0020_7" o:spid="_x0000_i1031" type="#_x0000_t75"
- alt="A graph showing a volcano plot&#10;&#10;Description automatically generated"
- style='width:132pt;height:118.5pt;flip:y;visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="file:///C:/Users/asus/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg"
-  o:title="A graph showing a volcano plot&#10;&#10;Description automatically generated"/>
-</v:shape><![endif]--><!--[if !vml]-->![A graph showing a volcano plot
 
-Description automatically generated](file:///C:/Users/asus/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)<!--[endif]-->**
+![Volcano plot](https://github.com/user-attachments/assets/145818b7-b7b2-4d7b-a821-0a2af3ae6e99)
+
+
+
+
+
+
+ 
 
 Figure <!--[if supportFields]><span style='font-size:
 10.0pt;line-height:115%'><span style='mso-element:field-begin'></span><span

@@ -1,10 +1,13 @@
-# Integrating Machine Learning and Differential Expression Analysis for Biomarker Discovery in Colon Adenocarcinoma 🧬💻🤖
+# Integrating Machine Learning and Differential Expression Analysis for Biomarker Discovery in Colon Adenocarcinoma 🧬💻
 
  **Authors:** Manal Agdada (@Manal), Ojiaku Confidence Chisom (@Areta), Abdulrahman Walid Elbagoury (@Willeau), Rahma Nabil Sallam (@rahmanabil2002), Pascal Onaho (@PascalOnaho), Hagar Haitham Elazab (@HBONH33), Mercy Francis (@Mercylee), Ariyo Adesokan (@Adesokan_ariyo1)
 
-**R script:** https://github.com/Onaho-Pascal/Hackbio-Stage-three-Task-4-/blob/main/Code/stage3_script.R
+**R script:** https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/main/Stage%203/Code/stage3_script.R
 
-**Figures:** https://github.com/Onaho-Pascal/Hackbio-Stage-three-Task-4-/tree/main/Figures
+
+
+**Figures:**  https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/a374ccce1e603791a8c4cab8ccc2a9d7e8a2c42f/Stage%203/Figures%20%26%20Visualization
+
 
  ## Introduction 
 Colon adenocarcinoma (COAD) is a prevalent and deadly cancer, often complicated by late diagnosis and treatment resistance [1]. The Cancer Genome Atlas (TCGA) has significantly advanced COAD research by providing extensive omics and clinical data, enhancing our understanding of COAD’s molecular landscape and revealing potential biomarkers essential for improving prognosis and developing personalized treatment strategies [2].

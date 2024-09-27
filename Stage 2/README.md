@@ -1,4 +1,4 @@
-**Gene Expression and Pathway Enrichment Analysis in Glioblastoma**
+## Gene Expression and Pathway Enrichment Analysis in Glioblastoma
 
 **Overview:**
 This project focuses on gene expression analysis in glioblastoma, one of the most aggressive forms of brain cancer. The analysis identifies differentially expressed genes (DEGs) and performs functional enrichment to explore the biological pathways involved in glioblastoma progression.

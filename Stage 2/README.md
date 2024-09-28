@@ -10,18 +10,28 @@ Data Visualization: Create heatmaps and bar plots to visualize gene expression a
 
 **Key Files:**
 glioblastoma_data.csv: Gene expression data for glioblastoma.
+
 DESeq2_analysis.Rmd: RMarkdown script for data analysis and visualization.
+
 Upregulated_genes_list.csv: List of upregulated genes.
+
 Downregulated_genes_list.csv: List of downregulated genes.
+
 top_20_upregulated_genes.csv: Top 20 upregulated genes.
+
 top_20_downregulated_genes.csv: Top 20 downregulated genes.
+
 enrichment.csv: Pathway enrichment results.
 
 **Technologies Used:**
 R: The main programming language used for analysis.
+
 R Packages:
+
 DESeq2 for differential gene expression analysis.
+
 ggplot2 for visualizations.
+
 gplots, dplyr, Amelia for data manipulation and plotting. 
 
 **Conclusion:**

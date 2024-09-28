@@ -1,6 +1,7 @@
 ## COAD Biomarker Discovery: ML and Differential Expression Analysis
 This repository contains the code and results for our project on integrating machine learning and differential expression analysis for biomarker discovery in Colon Adenocarcinoma (COAD).
-Project Overview
+
+**Project Overview**
 
 **Objective:** Identify potential biomarkers for COAD using TCGA data
 
@@ -18,7 +19,9 @@ Project Overview
 ## Results
 
 Identified 752 upregulated and 371 downregulated genes
+
 KNN model showed limitations, potentially due to small sample size
+
 Key genes identified: RPS4Y1, APOH, CYP1A1, GSTM1, PF4V1
 
 ## Analysis Chain
@@ -26,6 +29,7 @@ Key genes identified: RPS4Y1, APOH, CYP1A1, GSTM1, PF4V1
 **Data Preprocessing**
 
 Download and prepare TCGA COAD dataset
+
 Normalize RNA-seq data and filter lowly expressed genes
 
 

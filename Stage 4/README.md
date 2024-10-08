@@ -1,4 +1,4 @@
-# Glioma Biomarker Discovery: Integrating Machine Learning and Differential Expression Analysis
+## Glioma Biomarker Discovery: Integrating Machine Learning and Differential Expression Analysis
 
 ## Project Overview
 This project aims to discover biomarkers in glioma by integrating machine learning techniques with differential expression analysis. The focus is on distinguishing between IDH-mutant and IDH-wildtype gliomas using gene expression data from TCGA LGG and GBM datasets.

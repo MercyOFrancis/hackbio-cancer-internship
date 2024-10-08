@@ -13,7 +13,7 @@ This repository contains the code and results for our project on integrating mac
 
 **R script:** [Stage3_script.R](https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/main/Stage%203/Code/stage3_script.R)
 
-**Figures:** [Figures3 directory](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/a374ccce1e603791a8c4cab8ccc2a9d7e8a2c42f/Stage%203/Figures%20%26%20Visualization)
+**Figures:** [Figures&Visualization](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/a374ccce1e603791a8c4cab8ccc2a9d7e8a2c42f/Stage%203/Figures%20%26%20Visualization)
 
 
 ## Results

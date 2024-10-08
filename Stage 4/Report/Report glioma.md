@@ -1,10 +1,10 @@
 # Integrating Machine Learning and Differential Expression Analysis for Biomarker Discovery in Glioma 🧬💻🤖
 
- **Authors:** Manal Agdada (@Manal), Ojiaku Confidence Chisom (@Areta),  Rahma Nabil Sallam (@rahmanabil2002), Pascal Onaho (@PascalOnaho), Hagar Haitham Elazab (@HBONH33), Mercy Francis (@Mercylee), Ariyo Adesokan (@Adesokan_ariyo1)
+ **Authors:**  Mercy Francis (@Mercylee),  Ojiaku Confidence Chisom (@Areta), Manal Agdada (@Manal), Rahma Nabil Sallam (@rahmanabil2002), Pascal Onaho (@PascalOnaho), Hagar Haitham Elazab (@HBONH33), Ariyo Adesokan (@Adesokan_ariyo1)
 
-**R script:** https://github.com/manal-agdada/Stage-4---HackBio-internship/blob/main/Code/stage4_script.R
+**R script:** https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/0d4d132f6167f1a0306140432d7e4aee791d20c8/Stage%204/Code/stage4_script.R
 
-**Figures:** https://github.com/manal-agdada/Stage-4---HackBio-internship/tree/main/Figures
+**Figures:** https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/0d4d132f6167f1a0306140432d7e4aee791d20c8/Stage%204/Figures
 
 ## Introduction 
 Gliomas are the most common malignant brain tumors, classified into low-grade gliomas (LGG) and glioblastoma (GBM) [1]. Isocitrate dehydrogenase (IDH) mutations are key prognostic markers, as IDH-mutant gliomas have better prognoses and distinct molecular characteristics compared to IDH-wildtype tumors [2]. IDH-mutant gliomas are associated with a hypermethylation phenotype and tend to have more favorable outcomes [2]. In contrast, IDH-wildtype gliomas exhibit more aggressive behavior [2]. Therefore, methylation patterns in gliomas can serve as a valuable tool for molecular and clinical classification of gliomas [2].

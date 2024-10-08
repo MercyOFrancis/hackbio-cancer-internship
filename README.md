@@ -4,21 +4,22 @@ This repository houses the tasks assigned to me for the duration of my internshi
 
 ## Repository Structure
 
-- [Stage 0](#stage-0)
-- [Stage 1](#stage-1)
-- [Stage 2](#stage-2)
-- [Stage 3](#stage-3)
-- [Stage 4](#stage-4)
+- [Stage 0](https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/e51decb2b18841ecbd3d7c9fd446a6871b609a16/Stage%200/CENTRAL%20DOGMA%20OF%20MOLECULAR%20BIOLOGY_%20AN%20ESSENTIAL%20BASES%20FOR%20CANCER%20BIOMARKERS%20(1).md)
+- [Stage 1](https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/9d294cc13634b6b80edeab93144e97bd274cf8cd/Stage%201/COMPREHENSIVE%20MOLECULAR%20CHARACTERIZATION%20OF%20GASTRIC%20ADENOCARCINOMA%20(2).docx%20(1)%20(1).md)
+- [Stage 2](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/d0efb2f5ac13c2be49d0034c9c4ec8a2db2bfadd/Stage%202)
+- [Stage 3](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/d0efb2f5ac13c2be49d0034c9c4ec8a2db2bfadd/Stage%203)
+- [Stage 4](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/d0efb2f5ac13c2be49d0034c9c4ec8a2db2bfadd/Stage%204)
 
 
 
 ## Stage 0
+I wrote on the "CENTRAL DOGMA OF MOLECULAR BIOLOGY: AN ESSENTIAL BASES FOR CANCER BIOMARKERS"
 
-[Details for Stage 1, if any]
 
 ## Stage 1
+A summary "COMPREHENSIVE MOLECULAR CHARACTERIZATION OF GASTRIC ADENOCARCINOMA"
 
-[Details for Stage 2, if any]
+
 
 ## Stage 2
 

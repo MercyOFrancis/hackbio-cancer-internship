@@ -2,11 +2,11 @@
 
  **Authors:** Mercy Francis (@Mercylee), Manal Agdada (@Manal), Ojiaku Confidence Chisom (@Areta), Abdulrahman Walid Elbagoury (@Willeau), Rahma Nabil Sallam (@rahmanabil2002), Pascal Onaho (@PascalOnaho), Hagar Haitham Elazab (@HBONH33), Ariyo Adesokan (@Adesokan_ariyo1)
 
-**R script:** https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/main/Stage%203/Code/stage3_script.R
+**R script:** [Stage3_script.R](https://github.com/MercyOFrancis/hackbio-cancer-internship/blob/main/Stage%203/Code/stage3_script.R)
 
 
 
-**Figures:**  https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/a374ccce1e603791a8c4cab8ccc2a9d7e8a2c42f/Stage%203/Figures%20%26%20Visualization
+**Figures:**  [Figures&Visualization](https://github.com/MercyOFrancis/hackbio-cancer-internship/tree/a374ccce1e603791a8c4cab8ccc2a9d7e8a2c42f/Stage%203/Figures%20%26%20Visualization)
 
 
  ## Introduction 

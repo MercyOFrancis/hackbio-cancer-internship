@@ -13,11 +13,11 @@ This repository houses the tasks assigned to me for the duration of my internshi
 
 
 ## Stage 0
-I wrote on the "CENTRAL DOGMA OF MOLECULAR BIOLOGY: AN ESSENTIAL BASES FOR CANCER BIOMARKERS"
+A detailed discussion of the "CENTRAL DOGMA OF MOLECULAR BIOLOGY: AN ESSENTIAL BASES FOR CANCER BIOMARKERS"
 
 
 ## Stage 1
-A summary "COMPREHENSIVE MOLECULAR CHARACTERIZATION OF GASTRIC ADENOCARCINOMA"
+A concise analysis of the molecular characteristics of gastric adenocarcinoma, focusing on significant biological findings."COMPREHENSIVE MOLECULAR CHARACTERIZATION OF GASTRIC ADENOCARCINOMA"
 
 
 
@@ -64,8 +64,29 @@ In this stage, we were asked to reproduce the unsupervised clustering of gliomas
 3. Implement the analysis pipeline (kNN and random forest for ML; DEA for Biomarker-Devs).
 4. Generate a final report comparing results with the target paper.
 
-## How to Use This Repository
+## R libraries 
+•tidyverse – For data manipulation and visualizationggplot2 – To create visualizations like heatmapsComplex
 
+•Heatmap – For advanced heatmap generation with hierarchical clustering
+
+•DESeq2 – For differential expression analysis
+
+•clusterProfiler – To perform functional enrichment analysis
+
+•TCGAbiolinks – To access and download TCGA data
+
+•Amelia – For data imputation, handling missing values in datasets
+
+•Bioconductor packages (e.g., BiocManager) – For bioinformatics workflows
+
+
+
+## How to Use This Repository
+1. Clone the repository and navigate through each stage's folder to explore data, scripts, and reports.
+
+2. Run the R scripts provided in each stage to replicate data preprocessing, analysis, and visualization steps.
+   
+3. For more details, please refer to the documentation within each stage's folder.
 
 
 ## Contact
